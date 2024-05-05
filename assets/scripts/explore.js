@@ -49,11 +49,15 @@ function init() {
     synth.speak(utterThis);
 
     img.setAttribute("src", "assets/images/smiling-open.png");
-
+    let hasSpoken = false;
     const speakingInterval = setInterval(() => {
       if (!synth.speaking) {
-        clearInterval(speakingInterval);
-        img.setAttribute("src", "assets/images/smiling.png");
+        if (hasSpoken) {
+          clearInterval(speakingInterval);
+          img.setAttribute("src", "assets/images/smiling.png");
+        }
+      } else {
+        hasSpoken = true;
       }
     }, 50);
   })
