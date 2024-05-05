@@ -50,8 +50,11 @@ function init() {
 
     img.setAttribute("src", "assets/images/smiling-open.png");
 
-    utterThis.onend = () => {
-      img.setAttribute("src", "assets/images/smiling.png");
-    };
+    const speakingInterval = setInterval(() => {
+      if (!synth.speaking) {
+        clearInterval(speakingInterval);
+        img.setAttribute("src", "assets/images/smiling.png");
+      }
+    }, 50);
   })
 }
