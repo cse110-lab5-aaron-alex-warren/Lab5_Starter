@@ -18,16 +18,16 @@ function init() {
   // modified from linked demo
   function populateVoiceList() {
     voices = synth.getVoices();
-  
+
     for (let i = 0; i < voices.length; i++) {
       const option = document.createElement("option");
       option.textContent = `${voices[i].name} (${voices[i].lang})`;
-  
+
       if (voices[i].default) {
         option.textContent += " — DEFAULT";
-        voices 
+        voices
       }
-  
+
       option.setAttribute("data-lang", voices[i].lang);
       option.setAttribute("data-name", voices[i].name);
       voiceList.appendChild(option);
@@ -40,18 +40,18 @@ function init() {
     speechSynthesis.onvoiceschanged = populateVoiceList;
   }
 
-  inputText.addEventListener("change", ()=>{input = inputText.value})
+  inputText.addEventListener("change", () => { input = inputText.value })
 
-  button.addEventListener("click", ()=> {
+  button.addEventListener("click", () => {
     const utterThis = new SpeechSynthesisUtterance(input);
-    utterThis.voice = voices[voiceList.selectedIndex-1];
+    utterThis.voice = voices[voiceList.selectedIndex - 1];
 
     synth.speak(utterThis);
 
     img.setAttribute("src", "assets/images/smiling-open.png");
 
     utterThis.onend = () => {
-        img.setAttribute("src", "assets/images/smiling.png");
+      img.setAttribute("src", "assets/images/smiling.png");
     };
   })
 }

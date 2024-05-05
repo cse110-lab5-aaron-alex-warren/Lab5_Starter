@@ -14,16 +14,16 @@ function init() {
 
   let option = hornSelect.value;
 
-  hornSelect.addEventListener("input", function() {
+  hornSelect.addEventListener("input", function () {
     option = hornSelect.value;
     hornImg.setAttribute("src", "assets/images/" + option + ".svg");
     audio.setAttribute("src", "assets/audio/" + option + ".mp3");
   });
 
-  volumeSelect.addEventListener("input", function() {
+  volumeSelect.addEventListener("input", function () {
     let volume = Number(volumeSelect.value);
     audio.volume = volume / 100;
-    
+
     let volumeLevel = 0;
     if (volume >= 67) {
       volumeLevel = 3;
@@ -35,7 +35,7 @@ function init() {
     volumeImg.setAttribute("src", "assets/icons/volume-level-" + volumeLevel + ".svg");
   });
 
-  audioButton.addEventListener("click", function() {
+  audioButton.addEventListener("click", function () {
     if (audio.getAttribute("src") != "") { // only play audio if it's been linked to an audio file
       audio.play();
       if (option == "party-horn") {
