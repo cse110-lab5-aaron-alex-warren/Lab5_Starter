@@ -1,1 +1,5 @@
-# Lab 5 - Starter
+# Lab 5
+
+- Aaron Shi
+- Alex Turco
+- Warren
